@@ -32,6 +32,12 @@ func (vs *VideoStreamer) Seek(fileName string, start, end int) (io.Reader, int, 
 			end = len(record) - 1
 		}
 
+		// TODO: File implementation for more efficient reading
+		// file, _ := os.Open("")
+		// file.Seek(int64(start), io.SeekStart)
+
+		// io.LimitReader(file, int64(end-start+1))
+
 		r := bytes.NewReader(record[start : end+1])
 
 		return r, r.Len(), nil
